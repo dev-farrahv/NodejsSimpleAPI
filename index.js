@@ -24,7 +24,10 @@ app.post('/studentInfo',  urlencodedParser, (req, res) => {
     if(reqBody.firstName.match(/^[0-9!@#\$%\^\&*\)\(+=._-]+$/g)){
         return res.status(400).send("Invalid Input for Firstname! The input has special characters!");
     }
-    if(reqBody.middleName.length >= 3 ){
+    if(reqBody.lastName == "" || reqBody.lastName == null ){
+        return res.status(400).send("Invalid Input for LastName! Lastname is required!");
+    }
+    if(reqBody.middleName.length <= 3 ){
         return res.status(400).send("Invalid Input for Middlename! Middlename should be more than 3 characters!");
     }
     if(reqBody.age.match(/^[a-zA-Z!@#\$%\^\&*\)\(+=._-]+$/g)){
