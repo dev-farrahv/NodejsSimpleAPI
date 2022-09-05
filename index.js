@@ -3,8 +3,8 @@ const app = express();              //Instantiate an express app, the main work 
 const port = 5000;                  //Save the port number where your server will be listening
 
 //Idiomatic expression in express to route and respond to a client request
-app.get('/', (req, res) => {        //get requests to the root ("/") will route here
-   console.log('hi');      //server responds by sending the index.html file to the client's browser
+app.get('/studentInfo', (req, res) => {        //get requests to the root ("/") will route here
+    return res.status(200).send();      //server responds by sending the index.html file to the client's browser
                                                         //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
 });
 
