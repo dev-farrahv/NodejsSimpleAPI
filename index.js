@@ -19,7 +19,6 @@ app.post('/studentInfo',  urlencodedParser, (req, res) => {
     const reqBody = req.body;
     console.log(reqBody.firstName);
     
-
     //Validations
     if(reqBody.firstName.match(/^[0-9!@#\$%\^\&*\)\(+=._-]+$/g)){
         return res.status(400).send("Invalid Input for Firstname! The input has special characters!");
@@ -33,7 +32,7 @@ app.post('/studentInfo',  urlencodedParser, (req, res) => {
     if(reqBody.age.match(/^[a-zA-Z!@#\$%\^\&*\)\(+=._-]+$/g)){
         return res.status(400).send("Invalid Input for Age! The input has special characters!");
     }
-    if(reqBody.age.length < 3){
+    if(reqBody.age.length > 2){
         return res.status(400).send("Invalid Input for Age! Age length should only be 2 numbers/characters!");
     }  
 
