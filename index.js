@@ -17,11 +17,12 @@ app.get('/studentInfo', (req, res) => {        //get requests to the root ("/") 
 
 app.post('/studentInfo',  urlencodedParser, (req, res) => {
     const reqBody = req.body;
+    const specialChars = /[0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     console.log(reqBody.firstName);
     
     //Validations
-    if(reqBody.firstName.match(/^[0-9!@#\$%\^\&*\)\(+=._-]+$/g)){
-        return res.status(400).send("Invalid Input for Firstname! The input has special characters!");
+    if(specialChars.test(reqBody.firstName)){
+        return res.status(400).send("Invalid Input for Firstname! The input has special characters or numbers!");
     }
     if(reqBody.lastName == "" || reqBody.lastName == null ){
         return res.status(400).send("Invalid Input for LastName! Lastname is required!");
